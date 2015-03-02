@@ -150,6 +150,7 @@ bool decode_quad(short sequence, char * ascii) {
 		}
 		ascii[i] = cur;
 	}
+	ascii[SEQ_PREFIX_LENGTH] = 0;
 	// if(valid){
 	// 	printf(" DECODED TO %s\n", ascii);		
 	// }
@@ -162,7 +163,6 @@ short encode_quad(char * map, unsigned long offset) {
 	short prefix = 0;
 	short shifted = 0;
 	size_t i;
-	// char quad_bits = SEQ_PREFIX_LENGTH * NUCLEOTIDE_BITS;
 	for(i = 0; i < SEQ_PREFIX_LENGTH; ++i)
 	{
 		cur = map[offset + i];
@@ -188,7 +188,7 @@ short encode_quad(char * map, unsigned long offset) {
 			exit(1);
 			break;
 		}
-		shifted = cur << (QUAD_BITS - NUCLEOTIDE_BITS - (i * NUCLEOTIDE_BITS));
+		shifted = cur << (BITS_PER_QUAD - NUCLEOTIDE_BITS - (i * NUCLEOTIDE_BITS));
 		// printf("%u ", (short)shifted);
 		prefix |= shifted;
 		// printf("%u ", (short)cur);
