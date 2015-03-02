@@ -38,10 +38,6 @@ You may specify as many .fastq files as you'd like. The results will be merged a
 
 [Preston Lee](http://prestonlee.com)
 
-# License #
+# License & Copyright #
 
 See LICENSE file for details.
-
-# Copyright #
-
-Copyright 2011 Preston Lee. All rights reserved.
