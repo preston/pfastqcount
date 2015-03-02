@@ -1,6 +1,6 @@
 # pfastqcount #
 
-Preston's FASTQ Prefix Counter
+Preston's FASTQ Primer Counter
 
 # About #
 
