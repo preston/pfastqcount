@@ -202,11 +202,10 @@ void print_csv(unsigned int counts[]) {
 	char text[SEQ_PREFIX_LENGTH + 1];
 	// char text[SEQ_PREFIX_LENGTH + 1];
 	int i;
-	bool valid;
 	printf("Prefix, Count\n");
 	for(i = 0; i < SEQ_PERMUTATION_COUNT; ++i)
 	{
-		valid = decode_quad(i, text);
+		decode_quad(i, text);
 		if(counts[i] > 0) {
 			printf("%s, %u\n", text, counts[i]);			
 		}
