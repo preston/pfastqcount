@@ -1,3 +1,10 @@
+/*
+ * Preston's FASTQ Primer Counter
+ * https://github.com/preston/pfastqcount
+ * Author: Preston Lee <preston.lee@prestonlee.com>
+ *
+ */
+
 #include "pfastqcount.h"
 
 
@@ -5,8 +12,8 @@ int main(int argc, char ** argv) {
 	int ret = EXIT_FAILURE;
 	// The user must specify a minimum read lengeth as well as list of files to process.
 	if(argc < 3) {
-		printf("\nPreston's optimized FASTQ barcode Counter.\n");
-		printf("Counts occurances of individual barcodes in the provided FASTQ files.\n");
+		printf("\nPreston's optimized FASTQ barcode counter.\n");
+		printf("Extremely fast tally of individual barcodes in provided FASTQ files.\n");
 		printf("This software is written in raw C for 64-bit systems.\n");
 		printf("Copyright 2015 Preston Lee. All rights reserverd.\n");
 		printf("The output of the program is valid comma-separated value (CSV) data.\n");
@@ -20,7 +27,6 @@ int main(int argc, char ** argv) {
 		printf("If you don't know (or it varies), use 1.\n\n");
 		printf("\tExample:\n\n");
 		printf("\t\t%s 36 1.fastq 2.fastq > output.csv\n\n", argv[0]);
-		// printf("")
 	} else {
 		
 		// Start by allocating structures for prefix counts.
@@ -60,9 +66,8 @@ int main(int argc, char ** argv) {
 	    if (fstat(fd, &sb) == -1)           /* To obtain file size */
 	        handle_error("fstat");
 	
-	
+
 			// Memory map the file so the operating system manages paging.
-				// printf("FD: %i", fd);
 #ifdef __APPLE__
 			// char * map = mmap(NULL, length, PROT_READ, MAP_PRIVATE | MAP_NOCACHE, fd, 0);
 			char * map = mmap(NULL, length, PROT_READ, MAP_SHARED, fd, 0);
@@ -80,7 +85,6 @@ int main(int argc, char ** argv) {
 			unsigned long cur = 0;
 			const char newline = '\n';
 			// We only care about the 2nd line of each 4-line block, so some bookkeeping is in order.
-			// printf("NL: %i\n", (int)newline);
 			char line_block_offset = 0;
 			short line_offset = 0;
 			short prefix;

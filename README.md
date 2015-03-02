@@ -2,6 +2,8 @@
 
 Preston's FASTQ Primer Counter
 
+*Please use a release tag (not HEAD) for production purposes!*
+
 # About #
 
 pfastqcount is an optimized C implementation of a FASTQ sequence prefix counter. The program counts the number of times every four-nucleotide prefix is encountered via the sequential memory mapping of each ASCII-encoded FASTQ file into the process space. This is useful as part of a genomic data sequencing pipeline to sanity check that barcodes used in multiplexed sample experiments occur as expected. An alternative Ruby implementation is provided (pfastqcount.rb) for maximum portability and validation. The C implementation has been written for 64-bit Unix-like systems only. The output of the program is valid comma-separated value (CSV) data that may be opened in your favorite spreadsheet software such as Excel, OpenOffice, R etc.
