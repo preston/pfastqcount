@@ -156,13 +156,13 @@ bool decode_quad(short sequence, char * ascii) {
 	return valid;
 }
 
-/* Reads four characters of ASCII-encoding text and returns the sequence as a binary-encoding char, effectively compressing the 32-bit block into 16 bits. */
+/* Reads four characters of ASCII-encoding text and returns the sequence as a binary-encoded char, effectively compressing the 4-byte block into 1 byte. */
 short encode_quad(char * map, unsigned long offset) {
 	char cur = 0;
 	short prefix = 0;
 	short shifted = 0;
 	size_t i;
-	char quad_bits = SEQ_PREFIX_LENGTH * NUCLEOTIDE_BITS;
+	// char quad_bits = SEQ_PREFIX_LENGTH * NUCLEOTIDE_BITS;
 	for(i = 0; i < SEQ_PREFIX_LENGTH; ++i)
 	{
 		cur = map[offset + i];
@@ -188,7 +188,7 @@ short encode_quad(char * map, unsigned long offset) {
 			exit(1);
 			break;
 		}
-		shifted = cur << (quad_bits - NUCLEOTIDE_BITS - (i * NUCLEOTIDE_BITS));
+		shifted = cur << (QUAD_BITS - NUCLEOTIDE_BITS - (i * NUCLEOTIDE_BITS));
 		// printf("%u ", (short)shifted);
 		prefix |= shifted;
 		// printf("%u ", (short)cur);
