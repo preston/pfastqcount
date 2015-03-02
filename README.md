@@ -26,11 +26,11 @@ To get syntax help:
 	
 To run the program one one or more data files and print the results to the screen:
 
-	./pfastqcount some_data.fastq more_data.fastq
+	./pfastqcount 42 some_data.fastq more_data.fastq
 
 To run the program one one or more data files and create a .csv file:
 
-	./pfastqcount data1.fastq data2.fastq > results.csv
+	./pfastqcount 42 data1.fastq data2.fastq > results.csv
 
 You may specify as many .fastq files as you'd like. The results will be merged and summed before output is generated.
 
